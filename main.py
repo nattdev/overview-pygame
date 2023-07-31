@@ -10,12 +10,17 @@ GREEN = (0, 255, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (250, 0, 0)
+BLUE = (0, 0, 255)
 
 # Creamos ventana
 screen = pygame.display.set_mode(SIZE_SCREEN);
 
 # Reloj - Controlar FPS
 clock = pygame.time.Clock()
+
+# Visibilidad de mouse
+pygame.mouse.set_visible(0)
+
 
 # Coord de Rect
 coord_x = 400
@@ -46,12 +51,20 @@ while True:
     if (coord_y > 420 or coord_y < 0):
         speed_y *= -1
 
+    mouse_pos = pygame.mouse.get_pos()
+    x = mouse_pos[0]
+    y = mouse_pos[1]
+    print(mouse_pos)
+
     coord_x += speed_x
     coord_y += speed_y
     # Rellenar el color de fondo
     screen.fill(WHITE)
     ## Zona de dibujo --- ##
     ## Dibujos con for 
+
+    pygame.draw.circle(screen, BLUE, (x, y), 20)
+
         ## Dibujando circulos aleatorios
     for j in coord_list :
         x = j[0]
@@ -60,7 +73,6 @@ while True:
         j[1] += 1
         if j[1] > 500:
             j[1] = 0
-
 
     for i in range (100, 700, 100): # (inicio, fin, incremento)
         pygame.draw.rect(screen, GREEN, (i, 230, 50, 50))
