@@ -53,10 +53,14 @@ while True:
     ## Zona de dibujo --- ##
     ## Dibujos con for 
         ## Dibujando circulos aleatorios
-    for i in coord_list :
-        x = i[0]
-        y = i[1]
+    for j in coord_list :
+        x = j[0]
+        y = j[1]
         pygame.draw.circle(screen, RED, (x, y), 2)
+        j[1] += 1
+        if j[1] > 500:
+            j[1] = 0
+
 
     for i in range (100, 700, 100): # (inicio, fin, incremento)
         pygame.draw.rect(screen, GREEN, (i, 230, 50, 50))
