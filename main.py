@@ -27,7 +27,9 @@ speed_y = 3
 while True:
     # Eventos
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT or event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:
+                sys.exit()
             sys.exit()
     if (coord_x > 720 or coord_x < 0):
         speed_x *= -1
