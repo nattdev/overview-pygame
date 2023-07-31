@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 pygame.init()
 
@@ -8,6 +9,7 @@ SIZE_SCREEN = (800, 500);
 GREEN = (0, 255, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+RED = (250, 0, 0)
 
 # Creamos ventana
 screen = pygame.display.set_mode(SIZE_SCREEN);
@@ -23,6 +25,13 @@ coord_y = 200
 speed_x = 3
 speed_y = 3
 
+coord_list = []
+
+# Coord Circulos
+for i in range (60) :
+    x = random.randint(0, 800)
+    y = random.randint(0, 500)
+    coord_list.append( [x, y] )
 
 while True:
     # Eventos
@@ -43,6 +52,11 @@ while True:
     screen.fill(WHITE)
     ## Zona de dibujo --- ##
     ## Dibujos con for 
+        ## Dibujando circulos aleatorios
+    for i in coord_list :
+        x = i[0]
+        y = i[1]
+        pygame.draw.circle(screen, RED, (x, y), 2)
 
     for i in range (100, 700, 100): # (inicio, fin, incremento)
         pygame.draw.rect(screen, GREEN, (i, 230, 50, 50))
